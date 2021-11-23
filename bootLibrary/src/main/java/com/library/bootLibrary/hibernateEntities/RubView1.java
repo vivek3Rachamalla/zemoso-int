@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Entity
 @Immutable
-public class rubView1 {
+public class RubView1 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

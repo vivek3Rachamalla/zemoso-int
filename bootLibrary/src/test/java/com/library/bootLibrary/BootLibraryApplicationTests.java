@@ -1,8 +1,11 @@
 package com.library.bootLibrary;
 
 
-import com.library.bootLibrary.formEntities.loginPojo;
-import com.library.bootLibrary.formEntities.registerPojo;
+import com.library.bootLibrary.controller.LoginController;
+import com.library.bootLibrary.dto.AdminDto;
+import com.library.bootLibrary.dto.UserDto;
+import com.library.bootLibrary.formEntities.LoginPojo;
+import com.library.bootLibrary.formEntities.RegisterPojo;
 import org.junit.Test;
 import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +27,11 @@ import static org.junit.Assert.assertEquals;
 class BootLibraryApplicationTests {
 
 	@Autowired
-    com.library.bootLibrary.controller.loginController loginController;
+    LoginController loginController;
 	@Autowired
-    com.library.bootLibrary.dto.userDto userDto;
+    UserDto userDto;
 	@Autowired
-    com.library.bootLibrary.dto.adminDto adminDto;
+    AdminDto adminDto;
 
 
 	@Test
@@ -46,8 +49,8 @@ class BootLibraryApplicationTests {
 
 	@Test
 	void loginTest(){
-		loginPojo loginPojo=new loginPojo("user","user1123");
-		loginPojo loginPojo1=new loginPojo("admin","admin1123");
+		LoginPojo loginPojo=new LoginPojo("user","user1123");
+		LoginPojo loginPojo1=new LoginPojo("admin","admin1123");
 		assertEquals("redirect:/user",loginController.login(loginPojo, new BindingResult() {
             @Override
             public Object getTarget() {
@@ -233,7 +236,7 @@ class BootLibraryApplicationTests {
             public Class<?> getFieldType(String field) {
                 return null;
             }
-        }, new registerPojo()));
+        }, new RegisterPojo()));
 		assertEquals("redirect:/admin",loginController.login(loginPojo1,new BindingResult() {
             @Override
             public Object getTarget() {
@@ -419,12 +422,12 @@ class BootLibraryApplicationTests {
             public Class<?> getFieldType(String field) {
                 return null;
             }
-        },new registerPojo()));
+        },new RegisterPojo()));
 	}
 
 	@Test
 	void registerTest(){
-		registerPojo registerPojo=new registerPojo
+		RegisterPojo registerPojo=new RegisterPojo
 				("username","password","firstname","lastname","96314698741");
 		assertEquals("login",loginController.register(registerPojo,new BindingResult() {
             @Override
@@ -611,7 +614,7 @@ class BootLibraryApplicationTests {
             public Class<?> getFieldType(String field) {
                 return null;
             }
-        },new loginPojo()));
+        },new LoginPojo()));
 	}
 
 }

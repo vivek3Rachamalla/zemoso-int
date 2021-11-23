@@ -2,8 +2,8 @@ package com.library.bootLibrary.service;
 
 import com.library.bootLibrary.database.LibraryDao;
 import com.library.bootLibrary.hibernateEntities.Book;
-import com.library.bootLibrary.dto.adminDto;
-import com.library.bootLibrary.formEntities.bookPojo;
+import com.library.bootLibrary.dto.AdminDto;
+import com.library.bootLibrary.formEntities.BookPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 
 @ComponentScan(basePackages = "com.library.bootLibrary")
 @Component
-public class adminServices {
+public class AdminServices {
     @Autowired
     LibraryDao dao;
     @Autowired
-    adminDto adminDto;
+    AdminDto adminDto;
 
     public String adminService(ModelMap modelMap){
         modelMap.addAttribute("adminDto",adminDto);
-        modelMap.addAttribute("bookPojo",new bookPojo());
+        modelMap.addAttribute("bookPojo",new BookPojo());
         return "admin";
     }
 
@@ -47,7 +47,7 @@ public class adminServices {
         adminDto.setBookList(null);
     }
 
-    public String addBookService(bookPojo bookPojo){
+    public String addBookService(BookPojo bookPojo){
         Book book=new Book(bookPojo);
         dao.addBook(book);
         adminDto.setBookList(dao.getAllBooks());

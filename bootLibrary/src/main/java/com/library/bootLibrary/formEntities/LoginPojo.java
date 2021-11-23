@@ -4,21 +4,21 @@ package com.library.bootLibrary.formEntities;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class loginPojo {
+public class LoginPojo {
 
     @NotNull
-    @Size(min = 1, message = "You can't leave this empty.")
+    @Size(min = 1, max = 45,message = "should be between 1 and 45")
     private String usernameLogin;
     @NotNull
-    @Size(min = 1, message = "You can't leave this empty.")
+    @Size(min = 1, max = 45,message = "should be between 1 and 45")
     private String passwordLogin;
 
-    public loginPojo(String username, String password) {
+    public LoginPojo(String username, String password) {
         this.usernameLogin = username;
         this.passwordLogin = password;
     }
 
-    public loginPojo() {
+    public LoginPojo() {
 
     }
 

@@ -1,7 +1,7 @@
 package com.library.bootLibrary.controller;
 
-import com.library.bootLibrary.formEntities.bookPojo;
-import com.library.bootLibrary.service.adminServices;
+import com.library.bootLibrary.formEntities.BookPojo;
+import com.library.bootLibrary.service.AdminServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-public class adminController {
+public class AdminController {
     @Autowired
-    adminServices adminServices;
+    AdminServices adminServices;
 
     @RequestMapping("/admin")
     public String admin(ModelMap modelMap){
@@ -37,7 +37,7 @@ public class adminController {
     }
 
     @RequestMapping("/addBook")
-    public String addBook(@ModelAttribute("loginPojo") bookPojo bookPojo){
+    public String addBook(@ModelAttribute("loginPojo") BookPojo bookPojo){
         return adminServices.addBookService(bookPojo);
     }
 

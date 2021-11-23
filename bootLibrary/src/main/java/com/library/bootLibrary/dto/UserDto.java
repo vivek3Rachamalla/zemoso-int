@@ -1,8 +1,8 @@
 package com.library.bootLibrary.dto;
 
 import com.library.bootLibrary.hibernateEntities.Book;
-import com.library.bootLibrary.hibernateEntities.rubView1;
-import com.library.bootLibrary.formEntities.loginPojo;
+import com.library.bootLibrary.hibernateEntities.RubView1;
+import com.library.bootLibrary.formEntities.LoginPojo;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -10,20 +10,20 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class userDto {
+public class UserDto {
     private String username;
     private String password;
     private String role;
     private String date;
     private List<Book> bookList;
-    private Map<rubView1,String> havingBook;
-    private List<rubView1> history;
+    private Map<RubView1,String> havingBook;
+    private List<RubView1> history;
 
-    public userDto(){
+    public UserDto(){
         this.date= LocalDate.now().toString();
     }
 
-    public userDto(loginPojo loginPojo){
+    public UserDto(LoginPojo loginPojo){
         this.username=loginPojo.getUsernameLogin();
         this.password=loginPojo.getPasswordLogin();
         this.date= LocalDate.now().toString();
@@ -61,19 +61,19 @@ public class userDto {
         this.bookList = bookList;
     }
 
-    public Map<rubView1, String> getHavingBook() {
+    public Map<RubView1, String> getHavingBook() {
         return havingBook;
     }
 
-    public void setHavingBook(Map<rubView1, String> havingBook) {
+    public void setHavingBook(Map<RubView1, String> havingBook) {
         this.havingBook = havingBook;
     }
 
-    public List<rubView1> getHistory() {
+    public List<RubView1> getHistory() {
         return history;
     }
 
-    public void setHistory(List<rubView1> history) {
+    public void setHistory(List<RubView1> history) {
         this.history = history;
     }
 

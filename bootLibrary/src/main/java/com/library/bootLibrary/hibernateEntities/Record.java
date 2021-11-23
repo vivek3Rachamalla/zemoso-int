@@ -1,7 +1,7 @@
 package com.library.bootLibrary.hibernateEntities;
 
 
-import com.library.bootLibrary.formEntities.bookRequestPojo;
+import com.library.bootLibrary.formEntities.BookRequestPojo;
 
 import javax.persistence.*;
 import java.text.ParseException;
@@ -35,7 +35,7 @@ public class Record {
     public Record() {
     }
 
-    public Record(bookRequestPojo bookRequestPojo, String username) throws ParseException {
+    public Record(BookRequestPojo bookRequestPojo, String username) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         this.username=username;
         this.bookId=bookRequestPojo.getBookId();

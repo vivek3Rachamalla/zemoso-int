@@ -1,7 +1,7 @@
 package com.library.bootLibrary.hibernateEntities;
 
 
-import com.library.bootLibrary.formEntities.bookPojo;
+import com.library.bootLibrary.formEntities.BookPojo;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Book {
     private  Quantity quantity;
     public Book(){}
 
-    public Book(bookPojo bookPojo){
+    public Book(BookPojo bookPojo){
         this.name=bookPojo.getBookName();
         this.author=bookPojo.getAuthorName();
         this.quantity=new Quantity(id,Integer.parseInt(bookPojo.getQuantity()),0);

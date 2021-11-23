@@ -1,7 +1,7 @@
 package com.library.bootLibrary.controller;
 
 
-import com.library.bootLibrary.service.userServices;
+import com.library.bootLibrary.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,9 +12,9 @@ import java.text.ParseException;
 
 
 @Controller
-public class userController {
+public class UserController {
     @Autowired
-    userServices userService;
+    UserServices userService;
 
     @RequestMapping("/user")
     public String user(ModelMap modelMap){

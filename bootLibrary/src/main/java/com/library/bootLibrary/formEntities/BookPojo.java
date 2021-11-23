@@ -1,6 +1,6 @@
 package com.library.bootLibrary.formEntities;
 
-public class bookPojo {
+public class BookPojo {
     private String bookName;
     private String authorName;
     private String quantity;

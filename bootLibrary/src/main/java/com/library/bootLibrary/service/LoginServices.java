@@ -1,11 +1,11 @@
 package com.library.bootLibrary.service;
 
 import com.library.bootLibrary.database.LibraryDao;
-import com.library.bootLibrary.dto.adminDto;
-import com.library.bootLibrary.dto.userDto;
+import com.library.bootLibrary.dto.AdminDto;
+import com.library.bootLibrary.dto.UserDto;
 import com.library.bootLibrary.hibernateEntities.Register;
-import com.library.bootLibrary.formEntities.loginPojo;
-import com.library.bootLibrary.formEntities.registerPojo;
+import com.library.bootLibrary.formEntities.LoginPojo;
+import com.library.bootLibrary.formEntities.RegisterPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
@@ -14,35 +14,36 @@ import org.springframework.validation.BindingResult;
 
 @ComponentScan(basePackages = "com.library.bootLibrary")
 @Component
-public class loginServices {
+public class LoginServices {
     @Autowired
     LibraryDao dao;
     @Autowired
-    userDto userDto;
+    UserDto userDto;
     @Autowired
-    adminDto adminDto;
+    AdminDto adminDto;
 
-    static String authenticationMsg="";
+    private String authenticationMsg="";
+    private String login="login";
 
     public String loginPageService(ModelMap modelMap){
-        if(userDto.getUsername()!=null && userDto.getPassword()!=null){
-            if(userDto.getRole().equals("user")) return "redirect:/user";
-        }
-        if(adminDto.getUsername()!=null && adminDto.getPassword()!=null){
-             if(adminDto.getRole().equals("admin")) return "redirect:/admin";
-        }
+        if(userDto.getUsername()!=null && userDto.getPassword()!=null &&
+            userDto.getRole().equals("user")) return "redirect:/user";
+
+        if(adminDto.getUsername()!=null && adminDto.getPassword()!=null &&
+             adminDto.getRole().equals("admin")) return "redirect:/admin";
+
         modelMap.addAttribute("titleId","idLogin");
-        modelMap.addAttribute("registerPojo",new registerPojo());
+        modelMap.addAttribute("registerPojo",new RegisterPojo());
         modelMap.addAttribute("authenticationMsg",authenticationMsg);
-        modelMap.addAttribute("loginPojo",new loginPojo());
-        return "login";
+        modelMap.addAttribute("loginPojo",new LoginPojo());
+        return login;
     }
 
-    public String loginService(loginPojo loginPojo, BindingResult bindingResult){
+    public String loginService(LoginPojo loginPojo, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             authenticationMsg="";
-            return "login";
+            return login;
         }
         else {
             String role = dao.getRole(loginPojo.getUsernameLogin(), loginPojo.getPasswordLogin());
@@ -68,10 +69,10 @@ public class loginServices {
         return "redirect:/loginPage";
     }
 
-    public String registerService(registerPojo registerPojo){
+    public String registerService(RegisterPojo registerPojo){
         Register register=new Register(registerPojo);
         dao.addRegister(register);
-        return "login";
+        return login;
     }
 
 

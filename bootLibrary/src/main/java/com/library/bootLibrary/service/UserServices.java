@@ -1,10 +1,10 @@
 package com.library.bootLibrary.service;
 
 import com.library.bootLibrary.database.LibraryDao;
-import com.library.bootLibrary.hibernateEntities.rubView1;
-import com.library.bootLibrary.dto.userDto;
+import com.library.bootLibrary.hibernateEntities.RubView1;
+import com.library.bootLibrary.dto.UserDto;
 import com.library.bootLibrary.hibernateEntities.Record;
-import com.library.bootLibrary.formEntities.bookRequestPojo;
+import com.library.bootLibrary.formEntities.BookRequestPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
@@ -20,30 +20,31 @@ import java.util.Map;
 
 @ComponentScan(basePackages = "com.library.bootLibrary")
 @Component
-public class userServices {
+public class UserServices {
     @Autowired
     LibraryDao dao;
     @Autowired
-    userDto userDto;
+    UserDto userDto;
 
-    static String outOfBooks="";
+    private String outOfBooks="";
+    private String userRedirect="redirect:/user";
 
     public String userService(ModelMap modelMap){
         userDto.setHavingBook(getHavingBookList(userDto.getUsername()));
         userDto.setHistory(permissionAndDate());
         modelMap.addAttribute("userDto",userDto);
         modelMap.addAttribute("outOfBooks",outOfBooks);
-        modelMap.addAttribute("bookRequestPojo",new bookRequestPojo());
+        modelMap.addAttribute("bookRequestPojo",new BookRequestPojo());
         return "user";
     }
 
-    public List<rubView1> permissionAndDate(){
-       List<rubView1> rubView1List= dao.getRubViewList(userDto.getUsername());
+    public List<RubView1> permissionAndDate(){
+       List<RubView1> rubView1List= dao.getRubViewList(userDto.getUsername());
         LocalDate today=LocalDate.now();
         LocalDate fromDate;
         LocalDate toDate;
-        List<rubView1> newRubview1=new ArrayList<rubView1>();
-        for(rubView1 rubView:rubView1List) {
+        List<RubView1> newRubview1=new ArrayList<>();
+        for(RubView1 rubView:rubView1List) {
             fromDate = rubView.getFromDate().toLocalDate();
             toDate = rubView.getToDate().toLocalDate();
             if ((today.isAfter(fromDate) || today.isEqual(fromDate))
@@ -52,13 +53,13 @@ public class userServices {
         return newRubview1;
     }
 
-    public Map<rubView1, String> getHavingBookList(String username){
-        List<rubView1> rubViewList=dao.getUserBook(username);
+    public Map<RubView1, String> getHavingBookList(String username){
+        List<RubView1> rubViewList=dao.getUserBook(username);
         LocalDate today=LocalDate.now();
         LocalDate fromDate;
         LocalDate toDate;
-        Map<rubView1,String> havingBooks =new HashMap<rubView1,String>();
-        for(rubView1 rubView:rubViewList) {
+        Map<RubView1,String> havingBooks =new HashMap<>();
+        for(RubView1 rubView:rubViewList) {
              fromDate = rubView.getFromDate().toLocalDate();
              toDate = rubView.getToDate().toLocalDate();
                 if ((today.isAfter(fromDate) || today.isEqual(fromDate))
@@ -69,12 +70,12 @@ public class userServices {
     }
 
     public String bookRequestService(HttpServletRequest request) throws ParseException {
-        bookRequestPojo bookRequestPojo=new bookRequestPojo();
+        BookRequestPojo bookRequestPojo=new BookRequestPojo();
         bookRequestPojo.setFromDate(request.getParameter("fromDate"));
         bookRequestPojo.setToDate(request.getParameter("toDate"));
         bookRequestPojo.setBookId(request.getParameter("bookId"));
         dao.addRecord(new Record(bookRequestPojo,userDto.getUsername()));
-        return "redirect:/user";
+        return userRedirect;
     }
 
     public String userLogoutService(){
@@ -93,7 +94,7 @@ public class userServices {
 
     public String returnService(HttpServletRequest request){
         dao.returnBook(request.getParameter("recordId"));
-        return "redirect:/user";
+        return userRedirect;
     }
 
     public String barrowService(HttpServletRequest request){
@@ -104,6 +105,6 @@ public class userServices {
         catch (Exception e){
             outOfBooks=e.getMessage();
         }
-        return "redirect:/user";
+        return userRedirect;
     }
 }

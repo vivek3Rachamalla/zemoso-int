@@ -1,6 +1,6 @@
 package com.library.bootLibrary.formEntities;
 
-public class bookRequestPojo {
+public class BookRequestPojo {
     private String bookId;
     private String fromDate;
     private String toDate;

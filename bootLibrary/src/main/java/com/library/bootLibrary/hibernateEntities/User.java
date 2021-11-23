@@ -34,7 +34,7 @@ public class User {
         this.role=register.getRole();
         this.firstName=register.getFirstName();
         this.lastName=register.getLastName();
-        this.phoneN0= register.getPhoneNo();;
+        this.phoneN0= register.getPhoneNo();
     }
 
     public List<Record> getRecordList() {

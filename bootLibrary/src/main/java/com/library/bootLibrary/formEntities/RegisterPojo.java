@@ -1,7 +1,7 @@
 package com.library.bootLibrary.formEntities;
 
 
-public class registerPojo {
+public class RegisterPojo {
 
     private String username;
     private String password;
@@ -9,9 +9,9 @@ public class registerPojo {
     private String lastName;
     private String phoneNo;
 
-    public registerPojo(){}
+    public RegisterPojo(){}
 
-    public registerPojo(String username, String password, String firstName, String lastName, String phoneN0) {
+    public RegisterPojo(String username, String password, String firstName, String lastName, String phoneN0) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;

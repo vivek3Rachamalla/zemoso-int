@@ -1,8 +1,8 @@
 package com.library.bootLibrary.controller;
 
-import com.library.bootLibrary.formEntities.loginPojo;
-import com.library.bootLibrary.formEntities.registerPojo;
-import com.library.bootLibrary.service.loginServices;
+import com.library.bootLibrary.formEntities.LoginPojo;
+import com.library.bootLibrary.formEntities.RegisterPojo;
+import com.library.bootLibrary.service.LoginServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,9 +13,9 @@ import javax.validation.Valid;
 
 
 @Controller
-public class loginController {
+public class LoginController {
     @Autowired
-    loginServices loginService;
+    LoginServices loginService;
 
     @RequestMapping("/loginPage")
     public String loginPage(ModelMap modelMap){
@@ -23,13 +23,13 @@ public class loginController {
     }
 
     @RequestMapping(path = "/login")
-    public String login(@Valid @ModelAttribute("loginPojo") loginPojo loginPojo,BindingResult bindingResult,
-                        @ModelAttribute("registerPojo") registerPojo registerPojo ){
+    public String login(@Valid @ModelAttribute("loginPojo") LoginPojo loginPojo, BindingResult bindingResult,
+                        @ModelAttribute("registerPojo") RegisterPojo registerPojo ){
         return loginService.loginService(loginPojo,bindingResult);
     }
 
     @RequestMapping("/register")
-    public String register(@Valid @ModelAttribute("registerPojo") registerPojo registerPojo,BindingResult bindingResult,@ModelAttribute("loginPojo") loginPojo loginPojo){
+    public String register(@Valid @ModelAttribute("registerPojo") RegisterPojo registerPojo, BindingResult bindingResult, @ModelAttribute("loginPojo") LoginPojo loginPojo){
         return loginService.registerService(registerPojo);
     }
 

@@ -2,19 +2,19 @@ package com.library.bootLibrary.dto;
 
 import com.library.bootLibrary.hibernateEntities.Book;
 import com.library.bootLibrary.hibernateEntities.Register;
-import com.library.bootLibrary.hibernateEntities.rubView1;
+import com.library.bootLibrary.hibernateEntities.RubView1;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class adminDto {
+public class AdminDto {
     private String username;
     private String password;
     private String role;
     private List<Book> bookList;
     private List<Register> registerList;
-    private List<rubView1> rubViewList;
+    private List<RubView1> rubViewList;
 
     public String getUsername() {
         return username;
@@ -56,11 +56,11 @@ public class adminDto {
         this.registerList = registerList;
     }
 
-    public List<rubView1> getRubViewList() {
+    public List<RubView1> getRubViewList() {
         return rubViewList;
     }
 
-    public void setRubViewList(List<rubView1> rubViewList) {
+    public void setRubViewList(List<RubView1> rubViewList) {
         this.rubViewList = rubViewList;
     }
 }

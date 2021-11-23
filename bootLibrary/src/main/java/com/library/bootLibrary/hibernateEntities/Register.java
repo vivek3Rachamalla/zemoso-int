@@ -1,6 +1,6 @@
 package com.library.bootLibrary.hibernateEntities;
 
-import com.library.bootLibrary.formEntities.registerPojo;
+import com.library.bootLibrary.formEntities.RegisterPojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class Register {
 
     public Register(){}
 
-    public Register(registerPojo registerPojo) {
+    public Register(RegisterPojo registerPojo) {
         this.username = registerPojo.getUsername();
         this.password = registerPojo.getPassword();
         this.role = "user";
