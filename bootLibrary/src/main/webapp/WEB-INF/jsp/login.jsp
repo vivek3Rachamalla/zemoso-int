@@ -47,14 +47,17 @@ function Register(){
 <div class="card">
   <div class="card-header" style="background-color:#0d6efd"><h5 style="color: white">Login</h5></div>
   <div class="card-body">
+  <P Style="color: #ff0000;">${authenticationMsg}</p>
    <form:form modelAttribute="loginPojo" action="login">
-       <div class="form-group" style="padding-top: 10px;">
-         <form:label for="username" path="username">Username:</form:label>
-         <form:input type="text" path="username" class="form-control" id="Username" placeholder="Enter Username" name="username" />
+       <div class="form-group">
+         <form:errors path="usernameLogin" cssStyle="color: #ff0000;"/><br>
+         <form:label  path="usernameLogin">Username:</form:label>
+         <form:input type="text" path="usernameLogin" class="form-control" placeholder="Enter Username" />
        </div>
-       <div class="form-group" style="padding-top: 10px;">
-         <form:label for="pwd" path="password">Password:</form:label>
-         <form:input type="password" path="password" class="form-control" id="pwd" placeholder="Enter password" name="password" />
+       <div class="form-group">
+        <form:errors path="passwordLogin" cssStyle="color: #ff0000;"/><br>
+         <form:label for="pwd" path="passwordLogin">Password:</form:label>
+         <form:input type="password" path="passwordLogin" class="form-control" placeholder="Enter password"/>
        </div >
        <div style="padding-top: 10px;">
        <button type="submit" class="btn btn-primary" style="float: right;" >Submit</button>
@@ -73,32 +76,32 @@ function Register(){
 <div class="card">
   <div class="card-header" style="background-color:#0d6efd"><h5 style="color: white">Register</h5></div>
   <div class="card-body">
-  <form action="register">
+  <form:form modelAttribute="registerPojo"  action="register">
   <div class="form-group" style="padding-top: 10px;">
-        <label for="username">Username:</label>
-        <input type="text" class="form-control" id="Username" placeholder="Enter Username" name="username">
+        <form:label path="username" for="username">Username:</form:label>
+        <form:input type="text" class="form-control" id="Username" placeholder="Enter Username" path="username"/>
       </div>
       <div class="form-group" style="padding-top: 10px;">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+        <form:label path="password" for="pwd">Password:</form:label>
+        <form:input type="password" class="form-control" id="pwd" placeholder="Enter password" path="password"/>
       </div>
     <div class="form-group" style="padding-top: 10px;">
-      <label for="firstname">First name:</label>
-      <input type="text" class="form-control" id="Firstname" placeholder="Enter First Name" name="firstName">
+      <form:label path="firstName" for="firstname">First name:</form:label>
+      <form:input type="text" class="form-control" id="Firstname" placeholder="Enter First Name" path="firstName"/>
     </div>
     <div class="form-group" style="padding-top: 10px;">
-      <label for="lastname">Last name:</label>
-      <input type="text" class="form-control" id="Lastname" placeholder="Enter Last Name" name="lastName">
+      <form:label path="lastName" for="lastname">Last name:</form:label>
+      <form:input type="text" class="form-control" id="Lastname" placeholder="Enter Last Name" path="lastName"/>
     </div>
     <div class="form-group" style="padding-top: 10px;">
-      <label for="phoneNumber">Phone Number:</label>
-      <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" name="phoneNumber">
+      <form:label path="phoneNo" for="phoneNumber">Phone Number:</form:label>
+      <form:input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" path="phoneNo"/>
     </div>
 
     <div style="padding-top: 10px;">
     <button type="submit" name="register" value="register" class="btn btn-primary" style="float: right;">Submit</button>
     </div>
-  </form>
+  </form:form>
 </div>
 </div>
 </div>

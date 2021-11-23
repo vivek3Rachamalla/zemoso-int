@@ -64,7 +64,7 @@
          <th>Permission</th>
          <th>From date</th>
          <th>To date</th>
-         <th>Take</th>
+         <th>Barrow</th>
          </tr>
    </thead>
    <tbody>
@@ -74,7 +74,7 @@
      <td>${rubView.getPermission()}</td>
      <td>${rubView.getFromDate()}</td>
      <td>${rubView.getToDate()}</td>
-     <td><form action="barrow"><button type="submit" class="btn btn-success" name="recordId" value=${ rubView.getRecordId() }>take</button></form></td>
+     <td><form action="barrow"><button type="submit" class="btn btn-success" name="recordId" value=${ rubView.getRecordId() }>Barrow</button></form></td>
      </tr>
      </c:forEach>
    </tbody>
@@ -89,6 +89,7 @@
          <tr>
          <th>Book name</th>
          <th>Return</th>
+         <th>warning</th>
          </tr>
    </thead>
    <tbody>
@@ -96,6 +97,7 @@
      <tr>
      <td>${rubViewMap.key.getName()}</td>
      <td><form action="return"><button type="submit" class="btn btn-danger" name="recordId"  value=${ rubViewMap.key.getRecordId() }>return</button></form></td>
+     <td Style="color: #ff0000;" >${rubViewMap.value}</td>
      </tr>
      </c:forEach>
    </tbody>
