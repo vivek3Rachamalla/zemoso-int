@@ -67,7 +67,7 @@ public class LibraryDao {
     public List<RubView1> getRubViewList(String username){
         Session session = factory.getCurrentSession();
         Transaction transaction= session.beginTransaction();
-        List<RubView1> rubViewList=session.createQuery("select v from rubView1 v where username = '"
+        List<RubView1> rubViewList=session.createQuery("select v from RubView1 v where username = '"
                 + username+"' and had= 'no'", RubView1.class).getResultList();
         transaction.commit();
         session.close();
@@ -77,7 +77,7 @@ public class LibraryDao {
     public List<RubView1> getUserBook(String username){
         Session session = factory.getCurrentSession();
         Transaction transaction= session.beginTransaction();
-        List<RubView1> rubViewList=session.createQuery("select v from rubView1 v where username = '"+
+        List<RubView1> rubViewList=session.createQuery("select v from RubView1 v where username = '"+
                 username+"'"+" and have='yes' ", RubView1.class).getResultList();
         transaction.commit();
         session.close();
@@ -126,7 +126,7 @@ public class LibraryDao {
     public List<RubView1> bookRequestList(){
         Session session = factory.getCurrentSession();
         Transaction transaction= session.beginTransaction();
-        List<RubView1> recordList=session.createQuery("select v from rubView1 v " +
+        List<RubView1> recordList=session.createQuery("select v from RubView1 v " +
                 "where permission = 'no'").getResultList();
         transaction.commit();
         session.close();

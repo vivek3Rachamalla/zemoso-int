@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
 
@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @RequestMapping("/bookRequest")
-    public String bookRequest(HttpServletRequest request) throws ParseException {
-       return userService.bookRequestService(request);
+    public String bookRequest(@RequestParam String fromDate,@RequestParam String toDate,@RequestParam String bookId ) throws ParseException {
+       return userService.bookRequestService(fromDate,toDate,bookId);
    }
 
    @RequestMapping("/userLogout")
@@ -32,13 +32,13 @@ public class UserController {
    }
 
    @RequestMapping("/return")
-    public String request(HttpServletRequest request){
-        return userService.returnService(request);
+    public String returnBook(@RequestParam String recordId){
+        return userService.returnService(recordId);
    }
 
    @RequestMapping("/barrow")
-    public String barrow(HttpServletRequest request){
-        return userService.barrowService(request);
+    public String barrowBook(@RequestParam String recordId){
+        return userService.barrowService(recordId);
    }
 
 }

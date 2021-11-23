@@ -6,36 +6,40 @@ import com.library.bootLibrary.dto.AdminDto;
 import com.library.bootLibrary.formEntities.BookPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
-import javax.servlet.http.HttpServletRequest;
 
 @ComponentScan(basePackages = "com.library.bootLibrary")
-@Component
+@Service
 public class AdminServices {
     @Autowired
     LibraryDao dao;
     @Autowired
     AdminDto adminDto;
 
+    private String adminRedirect="redirect:/admin";
+    private String loginPageRedirect="redirect:/loginPage";
+
     public String adminService(ModelMap modelMap){
-        modelMap.addAttribute("adminDto",adminDto);
+
+        if(adminDto.getUsername()==null && adminDto.getPassword()==null)
+            return loginPageRedirect;
+
+                modelMap.addAttribute("adminDto",adminDto);
         modelMap.addAttribute("bookPojo",new BookPojo());
         return "admin";
     }
 
-    public String acceptService(HttpServletRequest request, ModelMap modelMap){
-        String username= request.getParameter("username");
+    public String acceptService(String username){
         dao.acceptRegister(username);
         adminDto.setRegisterList(dao.getRegisterList());
-        modelMap.addAttribute("adminDto",adminDto);
-        return "admin";
+        return adminRedirect;
     }
 
     public String adminLogoutService(){
         adminDtoDestructor();
-        return "redirect:/loginPage";
+        return loginPageRedirect;
     }
 
     public void adminDtoDestructor(){
@@ -51,26 +55,24 @@ public class AdminServices {
         Book book=new Book(bookPojo);
         dao.addBook(book);
         adminDto.setBookList(dao.getAllBooks());
-        return "redirect:/admin";
+        return adminRedirect;
     }
 
-    public String denyService(HttpServletRequest request) {
-        String username = request.getParameter("username");
+    public String denyService(String username) {
         dao.denyRegister(username);
         adminDto.setRegisterList(dao.getRegisterList());
-        return "redirect:/admin";
+        return adminRedirect;
     }
 
-
-    public String givePermissionService(HttpServletRequest request){
-        dao.givePermissionForBook(request.getParameter("recordId"));
+    public String givePermissionService(String recordId){
+        dao.givePermissionForBook(recordId);
         adminDto.setRubViewList(dao.bookRequestList());
-        return "redirect:/admin";
+        return adminRedirect;
     }
 
-    public String rejectPermissionService(HttpServletRequest request){
-        dao.rejectPermissionForBook(request.getParameter("recordId"));
+    public String rejectPermissionService(String recordId){
+        dao.rejectPermissionForBook(recordId);
         adminDto.setRubViewList(dao.bookRequestList());
-        return "redirect:/admin";
+        return adminRedirect;
     }
 }

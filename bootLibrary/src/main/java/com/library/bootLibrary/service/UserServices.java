@@ -7,10 +7,9 @@ import com.library.bootLibrary.hibernateEntities.Record;
 import com.library.bootLibrary.formEntities.BookRequestPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
-import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @ComponentScan(basePackages = "com.library.bootLibrary")
-@Component
+@Service
 public class UserServices {
     @Autowired
     LibraryDao dao;
@@ -28,8 +27,12 @@ public class UserServices {
 
     private String outOfBooks="";
     private String userRedirect="redirect:/user";
+    private String loginPageRedirect="redirect:/loginPage";
 
     public String userService(ModelMap modelMap){
+
+        if(userDto.getUsername()==null && userDto.getPassword()==null) return loginPageRedirect;
+
         userDto.setHavingBook(getHavingBookList(userDto.getUsername()));
         userDto.setHistory(permissionAndDate());
         modelMap.addAttribute("userDto",userDto);
@@ -69,18 +72,18 @@ public class UserServices {
         return havingBooks;
     }
 
-    public String bookRequestService(HttpServletRequest request) throws ParseException {
+    public String bookRequestService(String fromDate,String toDate,String bookId) throws ParseException {
         BookRequestPojo bookRequestPojo=new BookRequestPojo();
-        bookRequestPojo.setFromDate(request.getParameter("fromDate"));
-        bookRequestPojo.setToDate(request.getParameter("toDate"));
-        bookRequestPojo.setBookId(request.getParameter("bookId"));
+        bookRequestPojo.setFromDate(fromDate);
+        bookRequestPojo.setToDate(toDate);
+        bookRequestPojo.setBookId(bookId);
         dao.addRecord(new Record(bookRequestPojo,userDto.getUsername()));
         return userRedirect;
     }
 
     public String userLogoutService(){
         userDtoDestructor();
-        return "redirect:/loginPage";
+        return loginPageRedirect;
     }
 
     public void userDtoDestructor(){
@@ -92,15 +95,15 @@ public class UserServices {
         userDto.setHistory(null);
     }
 
-    public String returnService(HttpServletRequest request){
-        dao.returnBook(request.getParameter("recordId"));
+    public String returnService(String recordId){
+        dao.returnBook(recordId);
         return userRedirect;
     }
 
-    public String barrowService(HttpServletRequest request){
+    public String barrowService(String recordId){
         outOfBooks="";
         try{
-            dao.barrowBook(request.getParameter("recordId"));
+            dao.barrowBook(recordId);
         }
         catch (Exception e){
             outOfBooks=e.getMessage();

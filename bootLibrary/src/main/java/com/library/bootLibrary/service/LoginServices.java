@@ -8,12 +8,12 @@ import com.library.bootLibrary.formEntities.LoginPojo;
 import com.library.bootLibrary.formEntities.RegisterPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
 @ComponentScan(basePackages = "com.library.bootLibrary")
-@Component
+@Service
 public class LoginServices {
     @Autowired
     LibraryDao dao;

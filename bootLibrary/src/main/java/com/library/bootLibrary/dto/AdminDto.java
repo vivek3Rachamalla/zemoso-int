@@ -1,5 +1,6 @@
 package com.library.bootLibrary.dto;
 
+import com.library.bootLibrary.formEntities.LoginPojo;
 import com.library.bootLibrary.hibernateEntities.Book;
 import com.library.bootLibrary.hibernateEntities.Register;
 import com.library.bootLibrary.hibernateEntities.RubView1;
@@ -15,6 +16,13 @@ public class AdminDto {
     private List<Book> bookList;
     private List<Register> registerList;
     private List<RubView1> rubViewList;
+
+    public AdminDto(){}
+
+    public AdminDto(LoginPojo loginPojo){
+        this.username=loginPojo.getUsernameLogin();
+        this.password=loginPojo.getPasswordLogin();
+    }
 
     public String getUsername() {
         return username;

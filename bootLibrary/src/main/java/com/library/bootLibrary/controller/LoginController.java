@@ -29,7 +29,8 @@ public class LoginController {
     }
 
     @RequestMapping("/register")
-    public String register(@Valid @ModelAttribute("registerPojo") RegisterPojo registerPojo, BindingResult bindingResult, @ModelAttribute("loginPojo") LoginPojo loginPojo){
+    public String register(@Valid @ModelAttribute("registerPojo") RegisterPojo registerPojo,
+                           BindingResult bindingResult, @ModelAttribute("loginPojo") LoginPojo loginPojo){
         return loginService.registerService(registerPojo);
     }
 

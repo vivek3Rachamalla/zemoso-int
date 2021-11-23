@@ -7,9 +7,11 @@ import com.library.bootLibrary.dto.UserDto;
 import com.library.bootLibrary.formEntities.LoginPojo;
 import com.library.bootLibrary.formEntities.RegisterPojo;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -24,7 +26,8 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
-class BootLibraryApplicationTests {
+@RunWith(SpringRunner.class)
+public class BootLibraryApplicationTests {
 
 	@Autowired
     LoginController loginController;
@@ -33,9 +36,9 @@ class BootLibraryApplicationTests {
 	@Autowired
     AdminDto adminDto;
 
-
+    //login controller
 	@Test
-	void loginPageTest() {
+	public void loginPageTest() {
 		ModelMap modelMap=new ModelMap();
 		if(userDto.getUsername()!=null && userDto.getPassword()!=null){
 			assertEquals("redirect:/user",loginController.loginPage(modelMap));
@@ -48,7 +51,7 @@ class BootLibraryApplicationTests {
 	}
 
 	@Test
-	void loginTest(){
+	public void loginTest(){
 		LoginPojo loginPojo=new LoginPojo("user","user1123");
 		LoginPojo loginPojo1=new LoginPojo("admin","admin1123");
 		assertEquals("redirect:/user",loginController.login(loginPojo, new BindingResult() {
@@ -426,9 +429,9 @@ class BootLibraryApplicationTests {
 	}
 
 	@Test
-	void registerTest(){
+	public void registerTest(){
 		RegisterPojo registerPojo=new RegisterPojo
-				("username","password","firstname","lastname","96314698741");
+				("username","password","firstname","lastname","96314698");
 		assertEquals("login",loginController.register(registerPojo,new BindingResult() {
             @Override
             public Object getTarget() {

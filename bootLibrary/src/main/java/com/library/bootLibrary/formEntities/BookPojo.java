@@ -5,6 +5,14 @@ public class BookPojo {
     private String authorName;
     private String quantity;
 
+    public BookPojo(){}
+
+    public BookPojo(String bookName, String authorName, String quantity) {
+        this.bookName = bookName;
+        this.authorName = authorName;
+        this.quantity = quantity;
+    }
+
     public String getBookName() {
         return bookName;
     }

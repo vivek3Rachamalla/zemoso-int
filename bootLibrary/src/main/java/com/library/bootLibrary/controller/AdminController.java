@@ -7,8 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 
 @Controller
@@ -22,13 +23,13 @@ public class AdminController {
     }
 
     @RequestMapping("/acceptRegister")
-    public String accept(HttpServletRequest request, ModelMap modelMap){
-        return adminServices.acceptService(request,modelMap);
+    public String accept(@RequestParam String username){
+        return adminServices.acceptService(username);
     }
 
     @RequestMapping("/denyRegister")
-    public String deny(HttpServletRequest request,ModelMap modelMap){
-       return adminServices.denyService(request);
+    public String deny(@RequestParam String username){
+       return adminServices.denyService(username);
     }
 
     @RequestMapping("/adminLogout")
@@ -42,13 +43,13 @@ public class AdminController {
     }
 
     @RequestMapping("/givePermission")
-    public String givePermission(HttpServletRequest request){
-        return adminServices.givePermissionService(request);
+    public String givePermission(@RequestParam String recordId){
+        return adminServices.givePermissionService(recordId);
     }
 
     @RequestMapping("/rejectPermission")
-    public String rejectPermission(HttpServletRequest request){
-        return adminServices.rejectPermissionService(request);
+    public String rejectPermission(@RequestParam String recordId){
+        return adminServices.rejectPermissionService(recordId);
     }
 
 
