@@ -21,10 +21,10 @@ public class AdminControllerTest {
     AdminDto adminDto;
 
     private String redirectAdmin="redirect:/admin";
-    private String acceptUserUsername="";
-    private String denyUserUsername="";
-    private String acceptRecordId="";
-    private String denyRecordId="";
+    private String acceptUserUsername="example1";
+    private String denyUserUsername="example2";
+    private String acceptRecordId="32";
+    private String denyRecordId="33";
     private BookPojo bookPojo=new BookPojo("The OverStory","Richard Powers","4");
 
     @Test

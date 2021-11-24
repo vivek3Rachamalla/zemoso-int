@@ -45,7 +45,7 @@ public class UserControllerTest {
     @Test
     public void bookRequestTest() throws ParseException {
         userDto.setUsername("user");
-        assertEquals("redirect:/user",userController.bookRequest("2021-11-23","2021-11-23","1"));
+        assertEquals("redirect:/user",userController.bookRequest("2021-11-24","2021-11-24","2"));
     }
 
     @Test
