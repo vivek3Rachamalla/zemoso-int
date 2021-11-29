@@ -1,11 +1,11 @@
-package com.library.bootLibrary;
+package com.library.bootlibrary;
 
 
-import com.library.bootLibrary.controller.LoginController;
-import com.library.bootLibrary.dto.AdminDto;
-import com.library.bootLibrary.dto.UserDto;
-import com.library.bootLibrary.formEntities.LoginPojo;
-import com.library.bootLibrary.formEntities.RegisterPojo;
+import com.library.bootlibrary.controller.LoginController;
+import com.library.bootlibrary.dto.AdminDto;
+import com.library.bootlibrary.dto.UserDto;
+import com.library.bootlibrary.formentities.LoginPojo;
+import com.library.bootlibrary.formentities.RegisterPojo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.PropertyEditorRegistry;

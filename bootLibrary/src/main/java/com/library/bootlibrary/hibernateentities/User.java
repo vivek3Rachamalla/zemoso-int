@@ -1,4 +1,4 @@
-package com.library.bootLibrary.hibernateEntities;
+package com.library.bootlibrary.hibernateentities;
 
 
 import javax.persistence.*;

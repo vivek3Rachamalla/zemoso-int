@@ -1,6 +1,6 @@
-package com.library.bootLibrary.hibernateEntities;
+package com.library.bootlibrary.hibernateentities;
 
-import com.library.bootLibrary.formEntities.RegisterPojo;
+import com.library.bootlibrary.formentities.RegisterPojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

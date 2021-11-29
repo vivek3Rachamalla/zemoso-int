@@ -1,9 +1,9 @@
-package com.library.bootLibrary.service;
+package com.library.bootlibrary.service;
 
-import com.library.bootLibrary.database.LibraryDao;
-import com.library.bootLibrary.hibernateEntities.Book;
-import com.library.bootLibrary.dto.AdminDto;
-import com.library.bootLibrary.formEntities.BookPojo;
+import com.library.bootlibrary.database.LibraryDao;
+import com.library.bootlibrary.hibernateentities.Book;
+import com.library.bootlibrary.dto.AdminDto;
+import com.library.bootlibrary.formentities.BookPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,10 @@
-package com.library.bootLibrary.service;
+package com.library.bootlibrary.service;
 
-import com.library.bootLibrary.database.LibraryDao;
-import com.library.bootLibrary.hibernateEntities.RubView1;
-import com.library.bootLibrary.dto.UserDto;
-import com.library.bootLibrary.hibernateEntities.Record;
-import com.library.bootLibrary.formEntities.BookRequestPojo;
+import com.library.bootlibrary.database.LibraryDao;
+import com.library.bootlibrary.hibernateentities.RubView1;
+import com.library.bootlibrary.dto.UserDto;
+import com.library.bootlibrary.hibernateentities.Record;
+import com.library.bootlibrary.formentities.BookRequestPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;

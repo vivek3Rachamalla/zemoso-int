@@ -1,4 +1,4 @@
-package com.library.bootLibrary.customException;
+package com.library.bootlibrary.customexception;
 
 public class OutOfBook extends RuntimeException {
 

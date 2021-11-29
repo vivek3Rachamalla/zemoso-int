@@ -1,4 +1,4 @@
-package com.library.bootLibrary.formEntities;
+package com.library.bootlibrary.formentities;
 
 
 import javax.validation.constraints.NotNull;

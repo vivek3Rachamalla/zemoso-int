@@ -1,9 +1,9 @@
-package com.library.bootLibrary.dto;
+package com.library.bootlibrary.dto;
 
-import com.library.bootLibrary.formEntities.LoginPojo;
-import com.library.bootLibrary.hibernateEntities.Book;
-import com.library.bootLibrary.hibernateEntities.Register;
-import com.library.bootLibrary.hibernateEntities.RubView1;
+import com.library.bootlibrary.formentities.LoginPojo;
+import com.library.bootlibrary.hibernateentities.Book;
+import com.library.bootlibrary.hibernateentities.Register;
+import com.library.bootlibrary.hibernateentities.RubView1;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

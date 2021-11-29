@@ -1,8 +1,8 @@
-package com.library.bootLibrary;
+package com.library.bootlibrary;
 
-import com.library.bootLibrary.controller.AdminController;
-import com.library.bootLibrary.dto.AdminDto;
-import com.library.bootLibrary.formEntities.BookPojo;
+import com.library.bootlibrary.controller.AdminController;
+import com.library.bootlibrary.dto.AdminDto;
+import com.library.bootlibrary.formentities.BookPojo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

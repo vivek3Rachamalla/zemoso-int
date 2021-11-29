@@ -1,7 +1,7 @@
-package com.library.bootLibrary.hibernateEntities;
+package com.library.bootlibrary.hibernateentities;
 
 
-import com.library.bootLibrary.formEntities.BookRequestPojo;
+import com.library.bootlibrary.formentities.BookRequestPojo;
 
 import javax.persistence.*;
 import java.text.ParseException;

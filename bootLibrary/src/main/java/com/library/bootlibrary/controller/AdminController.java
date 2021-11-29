@@ -1,15 +1,11 @@
-package com.library.bootLibrary.controller;
+package com.library.bootlibrary.controller;
 
-import com.library.bootLibrary.formEntities.BookPojo;
-import com.library.bootLibrary.service.AdminServices;
+import com.library.bootlibrary.formentities.BookPojo;
+import com.library.bootlibrary.service.AdminServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -17,37 +13,37 @@ public class AdminController {
     @Autowired
     AdminServices adminServices;
 
-    @RequestMapping("/admin")
+    @GetMapping("/admin")
     public String admin(ModelMap modelMap){
         return adminServices.adminService(modelMap);
     }
 
-    @RequestMapping("/acceptRegister")
+    @RequestMapping(value = "/acceptRegister",method = {RequestMethod.GET,RequestMethod.POST})
     public String accept(@RequestParam String username){
         return adminServices.acceptService(username);
     }
 
-    @RequestMapping("/denyRegister")
+    @RequestMapping(value = "/denyRegister",method = {RequestMethod.GET,RequestMethod.DELETE})
     public String deny(@RequestParam String username){
        return adminServices.denyService(username);
     }
 
-    @RequestMapping("/adminLogout")
+    @GetMapping("/adminLogout")
     public String adminLogout(){
         return adminServices.adminLogoutService();
     }
 
-    @RequestMapping("/addBook")
+    @RequestMapping(value = "/addBook",method = {RequestMethod.GET,RequestMethod.POST})
     public String addBook(@ModelAttribute("loginPojo") BookPojo bookPojo){
         return adminServices.addBookService(bookPojo);
     }
 
-    @RequestMapping("/givePermission")
+    @RequestMapping(value = "/givePermission",method = {RequestMethod.GET,RequestMethod.POST})
     public String givePermission(@RequestParam String recordId){
         return adminServices.givePermissionService(recordId);
     }
 
-    @RequestMapping("/rejectPermission")
+    @RequestMapping(value = "/rejectPermission",method = {RequestMethod.GET,RequestMethod.DELETE})
     public String rejectPermission(@RequestParam String recordId){
         return adminServices.rejectPermissionService(recordId);
     }

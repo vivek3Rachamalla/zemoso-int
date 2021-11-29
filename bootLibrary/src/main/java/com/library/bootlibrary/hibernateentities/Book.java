@@ -1,9 +1,7 @@
-package com.library.bootLibrary.hibernateEntities;
-
+package com.library.bootlibrary.hibernateentities;
 
 
 import com.library.bootlibrary.formentities.BookPojo;
-import com.library.bootlibrary.hibernateentities.Record;
 
 import javax.persistence.*;
 import java.util.List;

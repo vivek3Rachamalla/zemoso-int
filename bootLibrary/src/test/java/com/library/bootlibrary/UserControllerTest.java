@@ -1,8 +1,8 @@
-package com.library.bootLibrary;
+package com.library.bootlibrary;
 
 
-import com.library.bootLibrary.controller.UserController;
-import com.library.bootLibrary.dto.UserDto;
+import com.library.bootlibrary.controller.UserController;
+import com.library.bootlibrary.dto.UserDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import java.text.ParseException;

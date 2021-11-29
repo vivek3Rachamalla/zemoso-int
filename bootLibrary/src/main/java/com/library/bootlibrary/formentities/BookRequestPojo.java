@@ -1,4 +1,4 @@
-package com.library.bootLibrary.formEntities;
+package com.library.bootlibrary.formentities;
 
 public class BookRequestPojo {
     private String bookId;
